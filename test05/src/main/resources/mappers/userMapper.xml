@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.test05.persistence.UserMapper">
+
+    <select id="getUserList" resultType="com.chunjae.test05.entity.User">
+        select * from euser order by id desc
+    </select>
+
+    <select id="getUser" resultType="com.chunjae.test05.entity.User">
+        select * from euser where eName = #{eName}
+    </select>
+
+    <select id="getByEmail" resultType="com.chunjae.test05.entity.User">
+        select * from euser where email = #{email}
+    </select>
+
+    <select id="getByName" resultType="com.chunjae.test05.entity.User">
+        select * from euser where
+    </select>
+
+    <select id="findById" resultType="com.chunjae.test05.entity.User">
+        select * from euser where email = #{email} and tel #{tel}
+    </select>
+
+    <select id="findByPw" resultType="com.chunjae.test05.entity.User">
+        select * from euser where email = #{email} and tel #{tel} and  eName = #{eName}
+    </select>
+
+    <select id="getUserById" resultType="com.chunjae.test05.entity.User">
+        select * from euser where id = #{id}
+    </select>
+
+    <update id="getWithdraw">
+        update euser set act = 'WITHDRAW' where id = #{id}
+    </update>
+
+    <update id="getActivate">
+        update euser set act = 'ACTIVATE' where eName = #{eName}
+    </update>
+
+    <update id="getDormant">
+        update euser set act = 'DORMANT' where eName = #{eName}
+    </update>
+
+    <update id="userUpdateInfo">
+        update euser set email = #{email}, tels #{tel}, address=#{address} where id = #{id}
+    </update>
+
+    <update id="userUpdatePw">
+        update euser set ePassword = #{ePassword} where id = #{id}
+    </update>
+
+    <update id="userUpdatePoint">
+        update euser set point = #{point} where id = #{id}
+    </update>
+
+    <update id="userUpdateLev">
+        update euser set lev = #{lev} where id = #{id}
+    </update>
+
+    <insert id="userJoin">
+        insert into euser values(default, #{eName}, #{ePassword}, #{userName}, #{email}, #{address}, #{tel}, default, default, default, default);
+    </insert>
+
+    <delete id="">
+        delete from euser where eName = #{eName}
+    </delete>
+
+</mapper>
