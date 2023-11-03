@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" th:href="@{/images/logo.png}">
+    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/grids-responsive-min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>메인페이지</title>
+</head>
+<body>
+<h1>메인페이지</h1>
+<hr />
+<p>표현법1 : <span th:text="${attrName}"></span></p>
+<p>표현법2 : <span>[[${attrName}]]</span></p>
+<hr />
+<h3>객체</h3>
+<ul>
+    <li>이름 : <span th:text="${human.name}"></span></li>
+    <li>나이 : <span th:text="${human.age}"></span></li>
+</ul>
+<ul>
+    <li>이름 : <span>[[${human.name}]]</span></li>
+    <li>나이 : <span>[[${human.age}]]</span></li>
+</ul>
+<hr />
+<h3>반복문</h3>
+<ul th:each="h : ${hList}">
+    <li>이름 : <span th:text="${h.name}"></span></li>
+    <li>나이 : <span th:text="${h.age}"></span></li>
+</ul>
+<table>
+    <thead>
+    <tr>
+        <th>이름</th>
+        <th>나이</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="h : ${hList}">
+        <td th:text="${h.name}"></td>
+        <td th:text="${h.age}"></td>
+    </tr>
+    </tbody>
+</table>
+<hr />
+<img th:src="@{/images/logo.png}" alt="이미지" />
+
+<a th:href="@{/login}">로그인</a>                <!-- 보안때문에 사용 자제 -->
+<form th:action="@{/login}" method="get">       <!-- 보안때문에 사용 권고 -->
+    <button type="submit">로그인</button>
+</form>
+
+<form th:action="@{/resistartion}" method="post"></form>
+</body>
+</html>
